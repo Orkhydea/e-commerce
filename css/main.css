@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.free{
+    background-color: black;
+    color: white;
+    height: 3vh;
+    padding: 5px;
+    font-size: 2vh;
+}
+.imail{
+    float: right;
+    letter-spacing: 1px;
+}
