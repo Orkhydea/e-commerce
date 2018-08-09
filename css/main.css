@@ -11,8 +11,4 @@
     display: inline;
     height: 30rem;
   }
-  .Button {
-    color: 'gold',   // 'gold, 'blue', 'silver', 'black'
-    size:  'medium', // 'medium', 'small', 'large', 'responsive'
-    shape: 'rect'    // 'rect', 'pill'
-  },
+  
