@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <nav class="navbar justify-content-center navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
             <a class="navbar-brand" href="#">
                 <span class="title">Hogar es</span>
                 <img src="./assets/images/hogares.png" width="30" height="30" alt="">
@@ -23,9 +23,13 @@
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button id="buscar-productos" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
             </form>
+            <div id="paypal-button"></div>
+
         </nav>
     </header>
+
     <div class="container-fluid">
         <div id="elementos"></div>
     </div>
@@ -35,6 +39,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="./js/assets/bootstrap.min.js"></script>
     <script src="./js/app.js"></script>
 </body>

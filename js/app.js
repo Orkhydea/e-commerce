@@ -9,6 +9,7 @@ $(document).ready(function () {
 var showHogar = function (hogares) {
     var name = "";
     var imagen = "";
+    var precio = "";
 
 
     hogares.results.forEach(function (hogar) {
@@ -16,12 +17,12 @@ var showHogar = function (hogares) {
         name = hogar.title;
         imagen = hogar.thumbnail;
         precio = hogar.price;
-        $("#elementos").append(armarTemplate(name, imagen))
+        $("#elementos").append(armarTemplate(name, imagen, precio))
     })
 }
 
-var armarTemplate = function (name, imagen, price) {
-    var t = "<div class='card' style='width: 15rem;'><img class='card-img-top' src='" + imagen + "alt='Card image cap'><div class='card-body'><h5 class='card-title'>" + name + "</h5><p class='card-text'><i class='fas fa-dollar-sign'></i> " + precio + "</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div>";
+var armarTemplate = function (name, imagen, precio) {
+    var t = "<div class='card' style='width: 15rem;'><img class='card-img-top' src='" + imagen + "alt='Card image cap'><div class='card-body'><h5 class='card-title'>" + name + "</h5><p class='card-text'><i class='fas fa-dollar-sign'></i> " + precio + "</p><a href='#' class='btn btn-primary'>Comprar</a></div></div>";
     return t;
 }
 
@@ -42,3 +43,39 @@ var ajaxHogar = function () {
             console.log("error");
         });
 }
+/* incorporando funcion de pago con paypal*/
+
+paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'demo_sandbox_client_id',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+      size: 'small',
+      color: 'gold',
+      shape: 'pill',
+    },
+    // Set up a payment
+    payment: function (data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '0.01',
+            currency: 'MX'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function (data, actions) {
+      return actions.payment.execute()
+        .then(function () {
+          // Show a confirmation message to the buyer
+          window.alert('Thank you for your purchase!');
+        });
+    }
+  }, '#paypal-button');
